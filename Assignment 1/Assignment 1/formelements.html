@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="style_f.css"/>
+    <link rel="icon" href="32x32.ico" type="image/x-icon">
+</head>
+<body>
+    <form action="menu.html" method="get">
+        <label for="first_name">First Name:
+            <input name="first_name" id="first_name" required type="text" placeholder="Your first name">
+        </label>
+        <label for="last_name">Last Name:
+            <input name="last_name" id="last_name" required type="text" placeholder="Your last name">
+        </label> 
+        <label for="email">Email Address:
+            <input name="email" id="email" type="email" placeholder="MAIL ADDRESS" required>
+        </label>
+        <label for="phone">Phone:
+            <input name="phone" id="phone" required type="tel" placeholder="(XXX-XXX-XXXX)">
+        </label>
+
+        <div class="meal-preferences">
+            <p>Select your meal preferences</p>
+            <label class="checkbox-label" for="e_breakfast">
+                <input name="e_breakfast" type="checkbox" id="e_breakfast" value="breakfast">Breakfast
+            </label>
+            <label class="checkbox-label" for="e_dinner">
+                <input name="e_dinner" type="checkbox" id="e_dinner" value="Dinner">Dinner
+            </label>
+        </div>
+    </br>
+</br>
+        <button type="submit">Place Order</button>
+    </form>
+
+</body>
+</html>
