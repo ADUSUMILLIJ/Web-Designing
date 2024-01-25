@@ -1,0 +1,431 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: url('/img/bg.jpg') center/cover fixed;
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+li,
+button,
+label,
+input,
+a,
+p {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 2.5rem;
+}
+
+h4,
+h5 {
+  font-size: 2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #2c2c2c;
+}
+
+.main-head {
+  width: 95%;
+  margin: 0 0 0 auto;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  width: 60%;
+  flex-wrap: wrap;
+}
+.skills-table {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+details summary {
+  cursor: pointer;
+  background-color: #fff9f900;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+details p {
+  background-color:#8ae4fffa ;
+}
+
+details summary:focus {
+  color: #fff;
+  outline: none;
+}
+
+details[open] summary {
+  background-color: #ffffff00;
+}
+
+.styled-table {
+  color: #ffffff;
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 2rem;
+}
+
+.styled-table th, .styled-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.styled-table th {
+  background-color: #154353;
+  color: white;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #d3747438;
+}
+.intro-heading {
+  text-align: center;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+nav .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1 10rem;
+}
+
+nav .logo h1 {
+  margin: 2rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1 1 40rem;
+}
+
+.intro {
+  min-height: 90vh;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.intro h2 {
+  font-size: 8rem;
+  padding-top: 2rem;
+  background: linear-gradient(left, #38d39f, #38a4d3);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.intro h3 {
+  color: #fff;
+  font-size: 5rem;
+  padding: 2rem 0rem;
+  align-items: center;
+}
+
+.intro p {
+  padding-top: 2rem;
+  color: #2c2c2c;
+}
+
+
+
+.intro-social {
+  margin-top: 4rem;
+}
+
+.intro-social a {
+  margin-right: 5rem;
+}
+
+.active {
+  background: #2c2c2c;
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 2rem;
+}
+
+.intro-text,
+.intro-images {
+  color: rgb(4, 77, 97);
+  flex: 1 1 40rem;
+}
+
+
+.projects {
+  width: 90%;
+  margin: auto;
+  min-height: 90vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.projects h2 {
+  margin: 5rem;
+}
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1px;
+}
+.certification {
+  width: 20%; 
+  float: left; 
+  margin: 10px;
+}
+
+figure {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  transition: transform 0.3s;
+}
+
+/*img {
+  width: 100%;
+  height: auto;
+  display: block;
+}*/
+
+figcaption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+figure:hover {
+  transform: scale(1.05);
+}
+
+figure:hover figcaption {
+  opacity: 1;
+}
+
+.travelly,
+.elena {
+  color: #fff;
+  flex: 1 1 40rem;
+}
+
+.form-section {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+
+.form-section form {
+  background-color: #83b3b362;
+  padding: 3rem 10rem;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2), 0px 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2rem;
+}
+
+.form-section form input,
+.form-section form textarea {
+  margin: 2rem;
+}
+
+.form-section form input:focus,
+.form-section form textarea:focus {
+  outline: 2px solid black;
+}
+
+.form-section form textarea {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+}
+
+.form-section form button {
+  width: 100%;
+  padding: 2rem;
+  background: #154353;
+  color: white;
+}
+
+.form-section form button:focus {
+  background: #33696b;
+}
+.github-icon {
+  width: 58px; 
+  height: 58px; 
+}
+
+footer {
+  background: #154353;
+  color: white;
+  min-height: 10vh;
+  padding: 0% 5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+footer ul {
+  flex: 1 1 40rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer h4 {
+  flex: 1 1 40rem;
+}
+
+@media screen and (max-width: 3356px) {
+  html {
+    font-size: 53%;
+  }
+  .png {
+    width: 80%;
+  }
+  nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 768px){
+  html {
+    font-size: 45%;
+  }
+  .png {
+    height: 60%;
+  }
+  .main-head {
+    width: 100%;
+  }
+  nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1 1 20rem;
+    margin-top: 2rem;
+  }
+  nav ul {
+    flex: 1 1 60rem;
+    margin: 2rem 0rem;
+  }
+  .intro-text {
+    margin-top: 5rem;
+    text-align: center;
+  }
+  .intro-images {
+    text-align: center;
+  }
+  .intro-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .intro-social a {
+    margin: 2rem;
+  }
+  form {
+    padding: 0rem;
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 365px) and (max-width: 365px){
+  html {
+    font-size: 45%;
+  }
+  .png {
+    height: 60%;
+  }
+  .main-head {
+    width: 100%;
+  }
+  nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1 1 20rem;
+    margin-top: 2rem;
+  }
+  nav ul {
+    flex: 1 1 60rem;
+    margin: 2rem 0rem;
+  }
+  .intro-text {
+    margin-top: 5rem;
+    text-align: center;
+  }
+  .intro-images {
+    text-align: center;
+  }
+  .intro-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .intro-social a {
+    margin: 2rem;
+  }
+  form {
+    padding: 0rem;
+    width: 100%;
+  }
+
+}
+

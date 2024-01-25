@@ -1,0 +1,91 @@
+.main-head {
+  width: 95%;
+  margin: 0 0 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+  width: 60%;
+  flex-wrap: wrap;
+}
+
+nav .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1 1 10rem;
+}
+
+nav .logo h1 {
+  margin: 2rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1 1 40rem;
+}
+
+.intro {
+  min-height: 90vh;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.intro h2 {
+  font-size: 8rem;
+  padding-top: 2rem;
+  background: gray;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.intro h3 {
+  background-color: aliceblue;
+  font-size: 6rem;
+  padding: 2rem 0rem;
+  align-items: center;
+}
+
+.intro p {
+  padding-top: 2rem;
+  color: gray;
+}
+
+.splash {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 100%;
+  z-index: -1;
+}
+
+.intro-social {
+  margin-top: 4rem;
+}
+
+.intro-social a {
+  margin-right: 5rem;
+}
+
+.active {
+  background: gray;
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 2rem;
+}
+
+.intro-text,
+.intro-images {
+  flex: 1 1 40rem;
+}
+
