@@ -1,0 +1,256 @@
+// Title constructor function
+function Title(t1) {
+  this.mytitle = t1;
+}
+
+Title.prototype.getName = function () {
+  return (this.mytitle);
+};
+
+// Function to apply checkbox listeners
+function applyCheckboxListeners() {
+  document.querySelectorAll('#myTable input[type="checkbox"]').forEach(function (checkbox) {
+    checkbox.removeEventListener('change', checkboxChangeHandler);
+    checkbox.addEventListener('change', checkboxChangeHandler);
+  });
+}
+
+// Function to handle checkbox change
+function checkboxChangeHandler() {
+  var submitButton = document.getElementById("Submit button");
+  var checkedCheckboxes = document.querySelectorAll('#myTable input[type="checkbox"]:checked');
+var submitButton = document.getElementById("Submit button");
+  var row = this.closest('tr');
+
+  if (this.checked) {
+    row.style.backgroundColor = 'yellow';
+  } else {
+    row.style.backgroundColor = '';
+  }
+
+  var checkedCheckboxes = document.querySelectorAll('#myTable input[type="checkbox"]:checked');
+
+  // Hide all DELETE and EDIT buttons
+  document.querySelectorAll('#myTable tr:not(:last-child)').forEach(function (row) {
+    var deleteButton = row.cells[row.cells.length - 1].querySelector('button.deleteButton');
+    var editButton = row.cells[row.cells.length - 1].querySelector('button.editButton');
+
+    if (deleteButton) {
+      deleteButton.style.display = 'none';
+    }
+
+    if (editButton) {
+      editButton.style.display = 'none';
+    }
+  });
+
+  // Show DELETE and EDIT buttons only for the checked rows
+  checkedCheckboxes.forEach(function (checkbox) {
+    var row = checkbox.closest('tr');
+    var deleteButton = row.cells[row.cells.length - 1].querySelector('button.deleteButton');
+    var editButton = row.cells[row.cells.length - 1].querySelector('button.editButton');
+
+    if (deleteButton) {
+      deleteButton.style.display = 'inline-block';
+    }
+
+    if (editButton) {
+      editButton.style.display = 'inline-block';
+    }
+    row.style.backgroundColor = 'yellow';
+  });
+
+  if (checkedCheckboxes.length > 0) {
+    submitButton.style.backgroundColor = 'orange';
+  } else {
+    submitButton.style.backgroundColor = '';
+  }
+}
+
+// Function to add a delete button to the DELETE column and handle row deletion
+function addDeleteButton(row) {
+  var cellDelete = row.cells[row.cells.length - 1];
+
+  // Create the Delete button
+  var deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "Delete";
+  deleteButton.classList.add("deleteButton");
+  deleteButton.style.display = 'none'; // Initially hide the button
+  cellDelete.appendChild(deleteButton);
+
+  // Add event listener for Delete button
+  deleteButton.addEventListener("click", function () {
+    var studentName = row.cells[1].innerHTML;
+    if (confirm("Are you sure you want to delete " + studentName + "?")) {
+      var table = document.getElementById("myTable");
+      var rowIndex = row.rowIndex;
+      table.deleteRow(rowIndex);
+      alert(studentName + " Record deleted successfully");
+    }
+  });
+}
+
+// Function to add an edit button to the EDIT column and handle editing popup
+function addEditButton(row) {
+  var cellEdit = row.cells[row.cells.length - 1];
+
+  // Create the Edit button
+  var editButton = document.createElement("button");
+  editButton.innerHTML = "Edit";
+  editButton.classList.add("editButton");
+  editButton.style.display = 'none'; // Initially hide the button
+  cellEdit.appendChild(editButton);
+
+  // Add event listener for Edit button
+  editButton.addEventListener("click", function () {
+    var studentName = row.cells[1].innerHTML;
+    openEditPopup(studentName, row);
+  });
+}
+
+// Function to open the edit pop-up
+function openEditPopup(studentName, row) {
+  var editPopup = document.getElementById("editPopup");
+  var editPopupTitle = document.getElementById("editPopupTitle");
+  var studentDetails = document.getElementById("studentDetails");
+
+  editPopupTitle.textContent = "Edit Details of " + studentName;
+
+  var studentDetailsText = "";
+  for (var i = 1; i < row.cells.length - 2; i++) {
+    studentDetailsText += row.cells[i].textContent + "<br>";
+  }
+  studentDetails.innerHTML = studentDetailsText;
+
+  editPopup.classList.remove("hidden");
+
+  var updateButton = document.getElementById("updateButton");
+  updateButton.addEventListener("click", function () {
+    alert(studentName + " data updated successfully");
+    closeEditPopup();
+  });
+
+  var cancelButton = document.getElementById("cancelButton");
+  cancelButton.addEventListener("click", function () {
+    closeEditPopup();
+  });
+}
+
+// Function to close the edit pop-up
+function closeEditPopup() {
+  var editPopup = document.getElementById("editPopup");
+  editPopup.classList.add("hidden");
+}
+
+// Function to toggle details
+function toggleDetails() {
+  document.querySelectorAll('tr:not(.dropDownTextArea)').forEach(function (row) {
+    var arrow = row.querySelector('img');
+    row.addEventListener('click', function () {
+      var nextRow = this.nextElementSibling;
+      if (nextRow && nextRow.classList.contains('dropDownTextArea')) {
+        nextRow.classList.toggle('hidden');
+        arrow.classList.toggle('rotate');
+      }
+    });
+  });
+}
+
+// Function to add delete buttons for existing rows
+function addDeleteButtonsForExistingRows() {
+  var existingRows = document.querySelectorAll('#myTable tr:not(:last-child)');
+  existingRows.forEach(function (row) {
+    // Check if the row is the header row
+    if (!row.classList.contains('headerRow')) {
+      addDeleteButton(row);
+      addEditButton(row);
+
+      // Add event listener for existing delete buttons in last column
+      var deleteButton = row.cells[row.cells.length - 1].querySelector('button.deleteButton');
+      deleteButton.addEventListener("click", function () {
+        var studentName = row.cells[1].innerHTML;
+        if (confirm("Are you sure you want to delete " + studentName + "?")) {
+          var table = document.getElementById("myTable");
+          var rowIndex = row.rowIndex;
+          table.deleteRow(rowIndex);
+          alert(studentName + " Record deleted successfully");
+        }
+      });
+
+      // Add event listener for existing edit buttons in last column
+      var editButton = row.cells[row.cells.length - 1].querySelector('button.editButton');
+      editButton.addEventListener("click", function () {
+        var studentName = row.cells[1].innerHTML;
+        openEditPopup(studentName, row);
+      });
+    }
+  });
+}
+
+// Initial setup on window load
+window.onload = function () {
+  // Display user info
+  var fullName = "Jaswanth Adusumilli";
+  var nuid = "002813226";
+  document.getElementById("userInfo").innerHTML = "FullName -" + fullName + "<br>" + "NUID -" + nuid;
+
+  applyCheckboxListeners();
+
+  // Add Edit and Delete buttons for existing rows
+  addDeleteButtonsForExistingRows();
+
+  toggleDetails();
+
+  document.getElementById("add").addEventListener("click", function () {
+    try {
+      var table = document.getElementById("myTable");
+      var rowCount = table.rows.length;
+      var row = table.insertRow(rowCount);
+      var detailRow = table.insertRow(rowCount + 1);
+      var cellCheckbox = row.insertCell(0);
+      var cellStudent = row.insertCell(1);
+      var cellAdvisor = row.insertCell(2);
+      var cellAwardStatus = row.insertCell(3);
+      var cellSemester = row.insertCell(4);
+      var cellType = row.insertCell(5);
+      var cellBudget = row.insertCell(6);
+      var cellPercentage = row.insertCell(7);
+      var celldelete = row.insertCell(8);
+
+      cellCheckbox.innerHTML = '<input type="checkbox" /><br /><br /><img src="down.png" width="25px" />';
+      cellStudent.innerHTML = "Student " + (rowCount - Math.floor(rowCount / 2) );
+      cellAdvisor.innerHTML = "Teacher " + (rowCount - Math.floor(rowCount / 2));
+      cellAwardStatus.innerHTML = "Approved";
+      cellSemester.innerHTML = "Fall";
+      cellType.innerHTML = "TA";
+      cellBudget.innerHTML = "394284";
+      cellPercentage.innerHTML = "100%";
+      celldelete.innerHTML = "";
+      addDeleteButton(row);
+      addEditButton(row);
+
+      detailRow.className = "dropDownTextArea hidden";
+      var cell = detailRow.insertCell(0);
+      cell.colSpan = "8";
+      cell.innerHTML = `
+        Advisor:<br /><br />
+        Award Details<br />
+        Summer 1-2014(TA)<br />
+        Budget Number: <br />
+        Tuition Number: <br />
+        Comments:<br /><br /><br />
+        Award Status:<br /><br /><br />
+      `;
+
+      var studentName = "Student " + (rowCount - 3);
+      alert(studentName + " Record added successfully");
+
+      applyCheckboxListeners();
+      toggleDetails();
+
+    } catch (error) {
+      console.error("Error adding record:", error);
+      alert("Failed to add record");
+    }
+  });
+};
