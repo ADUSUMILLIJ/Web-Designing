@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Results</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+            margin-top: 50px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Feedback Results</h2>
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td id="title"></td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td id="firstName"></td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td id="lastName"></td>
+        </tr>
+        <tr>
+            <td>Email Id</td>
+            <td id="emailId"></td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td id="phoneNumber"></td>
+        </tr>
+        <tr>
+            <td>Street Address</td>
+            <td id="streetAddress"></td>
+        </tr>
+        <tr>
+            <td>ZipCode</td>
+            <td id="zipcode"></td>
+        </tr>
+        <tr>
+            <td>How did you hear</td>
+            <td id="hear"></td>
+        </tr>
+        <tr>
+            <td>Comments</td>
+            <td id="comments"></td>
+        </tr>
+        <tr>
+            <td>Way</td>
+            <td id="way"></td>
+        </tr>
+        <tr>
+            <td>Example</td>
+            <td id="example"></td>
+        </tr>
+    </table>
+
+    <script>
+      var title = localStorage.title || "N/A";
+      var firstName = localStorage.firstName || "N/A";
+      var lastName = localStorage.lastName || "N/A";
+      var emailId = localStorage.emailId || "N/A";
+      var phoneNumber = localStorage.phoneNumber || "N/A";
+      var streetAddress = localStorage.streetAddress || "N/A"; // Add this line
+      var zipcode = localStorage.zipcode || "N/A";
+      var hear = localStorage.hear || "N/A";
+      var comments = localStorage.comments || "N/A";
+      var way = localStorage.way || "N/A";
+      var example = localStorage.example || "N/A";
+      
+      document.getElementById("title").innerHTML = title;
+      document.getElementById("firstName").innerHTML = firstName;
+      document.getElementById("lastName").innerHTML = lastName;
+      document.getElementById("emailId").innerHTML = emailId;
+      document.getElementById("phoneNumber").innerHTML = phoneNumber;
+      document.getElementById("streetAddress").innerHTML = streetAddress; // Add this line
+      document.getElementById("zipcode").innerHTML = zipcode;
+      document.getElementById("hear").innerHTML = hear;
+      document.getElementById("comments").innerHTML = comments;
+      document.getElementById("way").innerHTML = way;
+      document.getElementById("example").innerHTML = example;
+    </script>
+</body>
+</html>
