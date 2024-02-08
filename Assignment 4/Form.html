@@ -103,7 +103,7 @@
     }
 
     function zipReg() {
-        var zipReg = /^[0-9]{5}$/; //type more to remain red
+        var zipReg = /^[0-9]{5}$/; 
         var zipcode = document.getElementById("zipcode").value;
         if (zipReg.test(zipcode) == true) {
             document.getElementById("zipcode").style.backgroundColor = "white";
@@ -126,7 +126,7 @@
     }
 
     function updateSubmitButtonState() {
-        var allValid = validateForm(); // Check if all form fields are valid
+        var allValid = validateForm();
         var submitBtn = document.getElementById('btn');
         if (allValid) {
             submitBtn.removeAttribute('disabled');
@@ -136,9 +136,7 @@
     }
 
     function validateForm() {
-        // Add your validation logic here
-        // Return true if all fields are valid, false otherwise
-        // For example:
+        
         var firstName = document.getElementById('firstName').value.trim();
         var lastName = document.getElementById('lastName').value.trim();
         var email = document.getElementById('emailId').value.trim();
@@ -274,7 +272,7 @@
                 ulCount++;
                 break;
         }
-        updateSubmitButtonState(); // Update the Submit button state after dynamically adding elements
+        updateSubmitButtonState();
     }
 
     function checkboxOnclick(checkbox) {
@@ -285,7 +283,7 @@
             document.getElementById("textarea").style.visibility = "hidden";
             document.getElementById("label").style.visibility = "hidden";
         }
-        updateSubmitButtonState(); // Update the Submit button state after checkbox click
+        updateSubmitButtonState();
     }
 
     function insertAfter(newEl, targetEl) {
@@ -298,10 +296,8 @@
     }
 
     function validate_form(thisform) {
-        // Your existing validation logic
-        // This function should just return true or false based on the form's validity
-        // It shouldn't handle enabling/disabling the Submit button, as it's done dynamically now
-        var fill_title = document.getElementsByName("title"); //validate radio button
+       
+        var fill_title = document.getElementsByName("title"); 
         var flag = 0;
         for (var i = 0; i < fill_title.length; i++) {
             if (fill_title.item(i).checked == true) {
@@ -360,7 +356,7 @@
                 ) == false
             ) {
                 example.focus();
-                return false; //validate both the checkbox and the textarea
+                return false; 
             }
             if (
                 validate_required(text, "Comments must be filled out!") == false
@@ -372,7 +368,6 @@
                 thisform.streetAddress2.value = "";
             }
         }
-        // Store form data in localStorage
         localStorage.setItem("title", thisform.title.value);
         localStorage.setItem("firstName", thisform.firstName.value);
         localStorage.setItem("lastName", thisform.lastName.value);
@@ -387,8 +382,6 @@
 
         thisform.reset();
     }
-
-    // Initial state setup
     updateSubmitButtonState();
 
 </script>
