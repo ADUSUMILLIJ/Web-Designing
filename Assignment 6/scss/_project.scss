@@ -1,0 +1,22 @@
+#project {
+  padding-top: $paddingLg;
+  
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .col-md-4 {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    img {
+      transition: 0.5s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

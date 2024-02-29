@@ -1,0 +1,84 @@
+// Variables
+$blackColor: #000;
+$lightBg: #eee;
+$secColor: #777;
+$primaryColor: #3498db;
+
+// Mixins
+@mixin button-styles($bg-color, $text-color, $hover-bg-color) {
+  background: $bg-color;
+  color: $text-color;
+  width: 100%;
+  padding: 15px;
+  transition: 0.5s;
+  &:hover {
+    background: $hover-bg-color;
+    color: #fff;
+  }
+}
+
+#footer {
+  background: $blackColor;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  p {
+    color: $lightBg;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+
+  ul {
+    a {
+      color: $lightBg;
+      text-decoration: none;
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+
+    span {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+    }
+  }
+
+  input {
+    border-radius: 0;
+    border: 0;
+    background: #595959;
+    color: #fff;
+  }
+
+  input[type="submit"] {
+    @include button-styles($secColor, #{$blackColor}, $primaryColor);
+  }
+
+  p.copy {
+    color: $secColor;
+    font-size: 14px;
+  }
+
+  p.top {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+    a {
+      color: $secColor;
+      font-size: 30px;
+      &:hover {
+        color: $primaryColor;
+      }
+    }
+  }
+}

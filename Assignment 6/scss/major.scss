@@ -1,0 +1,39 @@
+// major.scss
+
+@import 'css/bootstrap.min.css';
+@import 'style.css';
+@import 'css/custom.min.css';
+
+body {
+  background-color: #f2f2f2;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.course {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    color: #333;
+    font-size: 1.2em;
+  }
+
+  p {
+    color: #666;
+  }
+}
