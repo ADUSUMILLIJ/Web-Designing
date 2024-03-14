@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa; /* Default background color */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #time-label {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        #date-picker {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+        
+        #controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        button {
+            font-size: 1rem;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <label for="time-label">Time:</label>
+    <div id="time-label">00:00:00</div>
+    
+    <input type="date" id="date-picker">
+    
+    <div id="controls">
+        <button id="start-btn">Start</button>
+        <button id="stop-btn">Stop</button>
+        <button id="reset-btn">Reset</button>
+    </div>
+
+    <script>
+        let timer;
+        let running = false;
+        let seconds = 0;
+        let minutes = 0;
+        let hours = 0;
+        
+        const timeLabel = document.getElementById('time-label');
+        const startBtn = document.getElementById('start-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const datePicker = document.getElementById('date-picker');
+        
+        startBtn.addEventListener('click', () => {
+            startTimer();
+            document.body.style.backgroundColor = '#8bc34a'; // Green background color when started
+        });
+        
+        stopBtn.addEventListener('click', () => {
+            stopTimer();
+            document.body.style.backgroundColor = '#f44336'; // Red background color when stopped
+        });
+        
+        resetBtn.addEventListener('click', () => {
+            resetTimer();
+            document.body.style.backgroundColor = '#f8f9fa'; // Default background color when reset
+        });
+        
+        // Set today's date as the default value and disable future dates
+        const currentDate = new Date().toISOString().split('T')[0];
+        datePicker.value = currentDate;
+        datePicker.setAttribute('max', currentDate);
+        
+        function startTimer() {
+            if (!running) {
+                running = true;
+                timer = setInterval(updateTime, 1000);
+            }
+        }
+        
+        function stopTimer() {
+            clearInterval(timer);
+            running = false;
+        }
+        
+        function resetTimer() {
+            clearInterval(timer);
+            running = false;
+            seconds = 0;
+            minutes = 0;
+            hours = 0;
+            timeLabel.textContent = '00:00:00'; // Reset time label
+        }
+        
+        async function updateTime() {
+            await new Promise(resolve => setTimeout(resolve, 0)); // wait for the next event loop iteration
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+                if (minutes >= 60) {
+                    minutes = 0;
+                    hours++;
+                }
+            }
+            timeLabel.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+        }
+        
+        function pad(num) {
+            return num < 10 ? '0' + num : num;
+        }
+    </script>
+</body>
+</html>

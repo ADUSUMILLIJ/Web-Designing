@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+    <style>
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+      
+        .container {
+            width: 80%;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .result-green {
+            border-color: green;
+        }
+        .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    </style> 
+</head>   
+<body> 
+    <h1 class="text-center text-success"> 
+        Arithmetic Operations 
+    </h1> 
+    <p>Hello: <span id="loggedInUsername"></span></p>
+    <div class="container"> 
+        <div class="col-lg-8 m-auto d-block"> 
+            <form id="calculatorForm"> 
+                <div class="form-group"> 
+                    <label for="number1"> 
+                        Number 1: 
+                    </label> 
+                    <input type="text" 
+                           name="number1" 
+                           id="number1" 
+                           class="form-control"> 
+                    <div class="error-message" id="number1-error"></div>
+                </div> 
+  
+                <div class="form-group"> 
+                    <label for="number2"> 
+                        Number 2: 
+                    </label> 
+                    <input type="text" 
+                           name="number2" 
+                           id="number2" 
+                           class="form-control"> 
+                    <div class="error-message" id="number2-error"></div>
+                </div> 
+  
+                <div class="form-group"> 
+                    <input type="button" id="add" value="Add" class="btn btn-primary"> 
+                    <input type="button" id="subtract" value="Subtract" class="btn btn-primary"> 
+                    <input type="button" id="multiply" value="Multiply" class="btn btn-primary"> 
+                    <input type="button" id="divide" value="Divide" class="btn btn-primary"> 
+                </div> 
+  
+                <div class="form-group"> 
+                    <label for="result"> 
+                        Result: 
+                    </label> 
+                    <input type="text" 
+                           id="result" 
+                           class="form-control" 
+                           readonly> 
+                </div> 
+            </form> 
+        </div> 
+    </div> 
+  
+    <!-- Including jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <!-- Including calculator.js jQuery Script -->
+    <script> $(document).ready(function() {
+        // Retrieve the username from sessionStorage
+        var username = sessionStorage.getItem('username');
+        
+        // Display the username
+        $('#loggedInUsername').text(username);
+    });</script>
+    <script src="calculator.js"></script> 
+</body> 
+  
+</html>
